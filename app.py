@@ -30,6 +30,14 @@ st.markdown("""
     color: #1a1a2e;
   }
 
+  /* Force all text to be dark and readable */
+  p, span, div, td, th, label, caption {
+    color: #1a1a2e !important;
+  }
+  .stDataFrame, .stDataFrame * {
+    color: #1a1a2e !important;
+  }
+
   /* Hide Streamlit chrome */
   #MainMenu, footer, header { visibility: hidden; }
 
@@ -141,6 +149,14 @@ st.markdown("""
   }
   [data-testid="stSidebar"] .stButton button:hover {
     background: #3451d1;
+  }
+
+  /* Search input — white with gray border */
+  [data-testid="stTextInput"] input {
+    background-color: white !important;
+    color: #1a1a2e !important;
+    border: 1px solid #d1d5db !important;
+    border-radius: 6px !important;
   }
 
   /* Dataframe */
@@ -469,13 +485,23 @@ with tab_dashboard:
         st.markdown('<div class="section-header">🔴 High-Severity Issues Requiring Attention</div>',
                     unsafe_allow_html=True)
         for _, row in high_df.iterrows():
-            label = f"{row['title']}  —  {fmt_date(row.get('post_date'))}"
-            with st.expander(label):
-                if row.get("url"):
-                    st.markdown(f"[View original post →]({row['url']})")
-                st.write(f"**Theme:** {row['theme']}")
-                st.write(f"**Sentiment:** {row['sentiment']}")
-                st.write(f"**Summary:** {row['summary']}")
+            url = row.get("url", "")
+            title = row.get("title", "")
+            theme = row.get("theme", "")
+            sentiment = row.get("sentiment", "")
+            summary = row.get("summary", "")
+            date = fmt_date(row.get("post_date"))
+            link_html = f'<a href="{url}" target="_blank" style="color:#4361ee;text-decoration:none;font-size:12px;white-space:nowrap;">View post →</a>' if url else ""
+            st.markdown(f"""
+            <div style="border:0.5px solid #fca5a5;border-radius:8px;padding:0.875rem 1.1rem;background:#fff5f5;margin-bottom:8px;">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:4px;">
+                <p style="font-size:13px;font-weight:600;color:#1a1a2e !important;margin:0;flex:1;padding-right:1rem;">{title}</p>
+                {link_html}
+              </div>
+              <p style="font-size:12px;color:#374151 !important;margin:0 0 4px;"><strong>Theme:</strong> {theme} &nbsp;·&nbsp; <strong>Sentiment:</strong> {sentiment} &nbsp;·&nbsp; <strong>Date:</strong> {date}</p>
+              <p style="font-size:12px;color:#374151 !important;margin:0;">{summary}</p>
+            </div>
+            """, unsafe_allow_html=True)
 
 
 # ─────────────────────────────────────────────
