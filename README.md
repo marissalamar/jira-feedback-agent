@@ -2,7 +2,7 @@
 
 A live AI agent that monitors the Atlassian Jira community forum, 
 classifies customer feedback at scale, and generates executive-level 
-product intelligence — updated automatically on a daily schedule.
+product intelligence. Updated automatically on a daily schedule.
 
 ## Live Demo
 🔗 [jira-feedback-agent.onrender.com](https://jira-feedback-agent.onrender.com)
@@ -18,7 +18,7 @@ product intelligence — updated automatically on a daily schedule.
 ## Why I Built This
 Product ops teams spend significant time manually monitoring community 
 feedback, sampling posts, and synthesizing patterns. This agent automates 
-that entire workflow — from data collection to executive brief — 
+that entire workflow, from data collection to executive brief, 
 demonstrating how agentic AI can augment product operations work at scale.
 
 ## Tech Stack
@@ -29,5 +29,5 @@ demonstrating how agentic AI can augment product operations work at scale.
 - **Data:** Atlassian Jira community forum (public)
 
 ## Built By
-Marissa Lamar — Product Operations
+Marissa LaMar — Product Operations
 [LinkedIn](https://linkedin.com/in/marissalamar)
