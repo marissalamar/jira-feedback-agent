@@ -30,4 +30,4 @@ demonstrating how agentic AI can augment product operations work at scale.
 
 ## Built By
 Marissa LaMar — Product Operations
-[LinkedIn](https://www.linkedin.com/in/marissalamar)
+[LinkedIn](https://www.linkedin.com/in/marissa-lamar/)
