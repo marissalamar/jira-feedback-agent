@@ -11,11 +11,11 @@ import anthropic
 BOARD_PAGE_URL = "https://community.atlassian.com/forums/Jira-questions/qa-p/jira-questions/page/{page}"
 COMMUNITY_ROOT = "https://community.atlassian.com"
 
-RESULTS_FILE  = os.path.join(os.path.dirname(__file__), "results.json")
-HISTORY_FILE  = os.path.join(os.path.dirname(__file__), "history.json")
-CACHE_FILE    = os.path.join(os.path.dirname(__file__), "post_cache.json")
-SUMMARY_FILE  = os.path.join(os.path.dirname(__file__), "exec_summary.json")
-
+RESULTS_FILE  = "/var/data/results.json"
+HISTORY_FILE  = "/var/data/history.json"
+CACHE_FILE    = "/var/data/post_cache.json"
+SUMMARY_FILE  = "/var/data/exec_summary.json"
+ 
 DAYS_WINDOW = 90
 MAX_PAGES   = 200    # safety cap — well beyond 90 days
 PAGE_SLEEP  = 0.4   # seconds between listing page fetches
