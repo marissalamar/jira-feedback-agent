@@ -168,10 +168,13 @@ def analyse_title(client: anthropic.Anthropic, title: str) -> dict:
             {
                 "role": "user",
                 "content": (
-                    "Analyse this Jira community post title and respond with a JSON object only "
-                    "(no markdown, no extra text) with exactly these keys: "
-                    '"theme", "sentiment", "severity" (one of: low, medium, high), "summary" (one line).\n\n'
-                    f"Title: {title}"
+                   "Analyse this Jira community post title and respond with a JSON object only "
+"(no markdown, no extra text) with exactly these keys: "
+'"theme": a specific product area or feature such as "Automation Rules", "Admin Permissions", "SSO Configuration", "Board Layout", "Notification Settings", "API Access", "User Roles", "Billing" — never use generic categories like "Feature Request" or "Bug Report", always name the specific product area, '
+'"sentiment": one of: positive, neutral, negative, '
+'"severity": one of: low, medium, high, '
+'"summary": one sentence describing the specific problem or need.\n\n'
+f"Title: {title}"
                 ),
             }
         ],
