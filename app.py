@@ -208,8 +208,6 @@ if "scheduler_started" not in st.session_state:
 # ── Sidebar ────────────────────────────────────────────────────────────────────
 with st.sidebar:
     st.markdown("### ⚙️ Controls")
-    refresh = st.button("🔄 Refresh Data", use_container_width=True)
-
     st.divider()
 
     if os.path.exists(RESULTS_FILE):
@@ -259,34 +257,6 @@ with st.sidebar:
             if cnt is not None:
                 line += f" ({cnt} posts)"
             st.caption(line)
-
-# ── Manual refresh ─────────────────────────────────────────────────────────────
-if refresh:
-    progress_bar = st.progress(0, text="Starting...")
-    status_text = st.empty()
-
-    def update_progress(stage, page, posts_found, total_posts, current_title):
-        if stage == "scraping":
-            progress_bar.progress(5, text=f"Scraping page {page}… ({posts_found} posts in window so far)")
-            status_text.caption(f"Scanning board listing — page {page}")
-        elif stage == "analysis":
-            if total_posts and total_posts > 0:
-                pct = 10 + int((posts_found / total_posts) * 85)
-            else:
-                pct = 10
-            progress_bar.progress(pct, text=f"Analysing new post {posts_found+1}/{total_posts} with Claude…")
-            status_text.caption(f"{(current_title or '')[:80]}")
-        elif stage == "summary":
-            progress_bar.progress(97, text="Generating executive summary…")
-            status_text.caption("Almost done — asking Claude for the executive brief…")
-
-    with st.spinner("Running scraper and Claude analysis..."):
-        results = run_scraper(progress_callback=update_progress)
-
-    progress_bar.progress(100, text="Done!")
-    status_text.empty()
-    st.success(f"✅ Analysed {len(results)} posts from the last {DAYS_WINDOW} days.")
-    st.rerun()
 
 # ── Load data ──────────────────────────────────────────────────────────────────
 results = load_results()
@@ -463,7 +433,7 @@ with tab_dashboard:
     theme_df = pd.DataFrame(theme_counts.most_common(15), columns=["Theme", "Count"])
     col_a, col_b = st.columns([2, 1])
     with col_a:
-        st.bar_chart(theme_df.set_index("Theme")["Count"])
+        st.bar_chart(theme_df.sort_values("Count", ascending=False).set_index("Theme")["Count"])
     with col_b:
         st.dataframe(theme_df, width="stretch", hide_index=True)
 
