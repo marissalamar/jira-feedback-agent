@@ -17,7 +17,8 @@ from scheduler import start_scheduler, get_next_run, update_schedule, load_log
 st.set_page_config(
     page_title="Jira Product Intelligence",
     page_icon="📊",
-    layout="wide"
+    layout="wide",
+    initial_sidebar_state="collapsed"
 )
 
 # ── Executive styling ──────────────────────────────────────────────────────────
