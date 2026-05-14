@@ -23,21 +23,6 @@ st.set_page_config(
 # ── Executive styling ──────────────────────────────────────────────────────────
 st.markdown("""
 <style>
-  /* Global */
-  html, body, [class*="css"] {
-    font-family: 'Inter', 'Segoe UI', sans-serif;
-    background-color: #f8f9fb;
-    color: #1a1a2e;
-  }
-
-  /* Force all text to be dark and readable */
-  p, span, div, td, th, label, caption {
-    color: #1a1a2e !important;
-  }
-  .stDataFrame, .stDataFrame * {
-    color: #1a1a2e !important;
-  }
-
   /* Hide Streamlit chrome */
   #MainMenu, footer, header { visibility: hidden; }
 
@@ -48,32 +33,14 @@ st.markdown("""
   }
 
   /* Page header */
-  .page-header {
-    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-    color: white;
-    padding: 2rem 2.5rem;
-    border-radius: 12px;
-    margin-bottom: 1.5rem;
-  }
-  .page-header h1 {
-    font-size: 1.8rem;
-    font-weight: 700;
-    margin: 0 0 0.3rem 0;
-    color: white;
-  }
-  .page-header p {
-    font-size: 0.9rem;
-    opacity: 0.75;
-    margin: 0;
-    color: white;
-  }
+  .page-header h1 { color: white; }
+  .page-header p { color: rgba(255,255,255,0.8); }
 
   /* KPI cards */
   .kpi-card {
-    background: white;
+    background: rgba(255,255,255,0.05);
     border-radius: 10px;
     padding: 1.25rem 1.5rem;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.07);
     border-left: 4px solid #4361ee;
     margin-bottom: 0.5rem;
   }
@@ -85,60 +52,26 @@ st.markdown("""
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    color: #6b7280;
     margin-bottom: 0.25rem;
   }
   .kpi-value {
     font-size: 2rem;
     font-weight: 700;
-    color: #1a1a2e;
     line-height: 1;
-  }
-
-  /* Executive summary card */
-  .exec-card {
-    background: white;
-    border-radius: 12px;
-    padding: 1.75rem 2rem;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.07);
-    border-top: 4px solid #4361ee;
-    margin-bottom: 1.5rem;
-  }
-  .exec-card h3 {
-    font-size: 0.75rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: #4361ee;
-    margin: 0 0 0.75rem 0;
-  }
-  .exec-card h2 {
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: #1a1a2e;
-    margin: 0 0 1rem 0;
   }
 
   /* Section headers */
   .section-header {
     font-size: 1rem;
     font-weight: 700;
-    color: #1a1a2e;
     text-transform: uppercase;
     letter-spacing: 0.06em;
-    border-bottom: 2px solid #e5e7eb;
+    border-bottom: 2px solid rgba(255,255,255,0.15);
     padding-bottom: 0.5rem;
     margin: 1.75rem 0 1rem 0;
   }
 
-  /* Sidebar */
-  [data-testid="stSidebar"] {
-    background: #1a1a2e;
-    color: white;
-  }
-  [data-testid="stSidebar"] * {
-    color: white !important;
-  }
+  /* Sidebar button */
   [data-testid="stSidebar"] .stButton button {
     background: #4361ee;
     color: white;
@@ -147,53 +80,17 @@ st.markdown("""
     font-weight: 600;
     padding: 0.6rem 1rem;
   }
-  [data-testid="stSidebar"] .stButton button:hover {
-    background: #3451d1;
-  }
 
-  /* Search input — white with gray border */
+  /* Search input */
   [data-testid="stTextInput"] input {
-    background-color: white !important;
-    color: #1a1a2e !important;
-    border: 1px solid #d1d5db !important;
+    border: 1px solid rgba(255,255,255,0.2) !important;
     border-radius: 6px !important;
   }
 
-  /* Dataframe */
-  [data-testid="stDataFrame"] {
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
-  }
-
   /* Tabs */
-  .stTabs [data-baseweb="tab-list"] {
-    gap: 0.5rem;
-    border-bottom: 2px solid #e5e7eb;
-  }
-  .stTabs [data-baseweb="tab"] {
-    font-weight: 600;
-    font-size: 0.85rem;
-    color: #6b7280;
-    padding: 0.5rem 1rem;
-    border-radius: 6px 6px 0 0;
-  }
   .stTabs [aria-selected="true"] {
     color: #4361ee !important;
     border-bottom: 2px solid #4361ee;
-  }
-
-  /* Warning/info banners */
-  [data-testid="stAlert"] {
-    border-radius: 8px;
-    font-size: 0.875rem;
-  }
-
-  /* Expanders */
-  [data-testid="stExpander"] {
-    border: 1px solid #e5e7eb;
-    border-radius: 8px;
-    background: white;
   }
 </style>
 """, unsafe_allow_html=True)
