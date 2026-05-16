@@ -290,7 +290,7 @@ def _build_summary_prompt(results: list[dict]) -> str:
         f"{min(dates)[:10]} to {max(dates)[:10]}" if dates else "unknown range"
     )
 
-    theme_counts = Counter(r["theme"] for r in good).most_common(12)
+   theme_counts = Counter(r["theme"] for r in good if r.get("theme") not in ("Error", "Unknown", None)).most_common(12)
     sentiment_counts = Counter(r.get("sentiment", "unknown") for r in good)
     severity_counts  = Counter(r.get("severity",  "unknown") for r in good)
     total_good = len(good)
