@@ -335,13 +335,20 @@ SAMPLE HIGH-SEVERITY POST TITLES
 SAMPLE NEGATIVE-SENTIMENT POST TITLES
 {neg_lines}
 
-Write a concise executive summary in Markdown (~220 words) using exactly these sections:
+Write a factual executive briefing in Markdown using exactly these sections:
 ### Situation Overview
 ### Top Issue Themes
 ### Key Concerns
 ### Recommended Focus Areas
 
-Be specific, reference actual theme names and counts, and keep a professional tone."""
+Guidelines:
+- State facts and cite numbers only. No emotional language.
+- Do not use words like "alarming", "concerning", "critical crisis", or subjective adjectives.
+- Situation Overview: 2-3 sentences of data only — post count, sentiment percentages, severity percentages.
+- Top Issue Themes: list the top 5 themes by volume with exact post counts.
+- Key Concerns: list the top 3 high-severity issues as factual statements.
+- Recommended Focus Areas: 3-4 numbered action items tied directly to the data.
+- Total length: ~200 words. Consultant tone. No filler phrases."""
 
 
 def generate_executive_summary(
