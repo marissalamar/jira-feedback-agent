@@ -361,13 +361,13 @@ with tab_dashboard:
             date = fmt_date(row.get("post_date"))
             link_html = f'<a href="{url}" target="_blank" style="color:#4361ee;text-decoration:none;font-size:12px;white-space:nowrap;">View post →</a>' if url else ""
             st.markdown(f"""
-            <div style="border:0.5px solid #fca5a5;border-radius:8px;padding:0.875rem 1.1rem;background:#fff5f5;margin-bottom:8px;">
+            <div style="border:0.5px solid #fca5a5;border-radius:8px;padding:0.875rem 1.1rem;background:rgba(255,100,100,0.1);margin-bottom:8px;">
               <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:4px;">
-                <p style="font-size:13px;font-weight:600;color:#1a1a2e !important;margin:0;flex:1;padding-right:1rem;">{title}</p>
+               <p style="font-size:13px;font-weight:600;margin:0;flex:1;padding-right:1rem;">{title}</p>
                 {link_html}
               </div>
-              <p style="font-size:12px;color:#374151 !important;margin:0 0 4px;"><strong>Theme:</strong> {theme} &nbsp;·&nbsp; <strong>Sentiment:</strong> {sentiment} &nbsp;·&nbsp; <strong>Date:</strong> {date}</p>
-              <p style="font-size:12px;color:#374151 !important;margin:0;">{summary}</p>
+              <p style="font-size:12px;color:inherit;margin:0 0 4px;"><strong>Theme:</strong> {theme} &nbsp;·&nbsp; <strong>Sentiment:</strong> {sentiment} &nbsp;·&nbsp; <strong>Date:</strong> {date}</p>
+              <p style="font-size:12px;color:inherit;margin:0;">{summary}</p>
             </div>
             """, unsafe_allow_html=True)
 
